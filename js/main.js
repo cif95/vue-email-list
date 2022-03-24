@@ -7,9 +7,20 @@
 const app = new Vue({
 	el:'#app',
 	data: {
-		
+		generatedEmails : []
 	},
 	methods: {
-
+		getRandomMail(){
+			axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+			.then( (response) => {
+				this.generatedEmails.push(response.data.response);
+				console.log(this.generatedEmails);
+			});
+		}
+	},
+	mounted(){
+		for( let i = 0; i < 10 ; i++){
+			this.getRandomMail();
+		}
 	}
 })

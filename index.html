@@ -12,6 +12,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet"> 
 	<!-- vue js -->
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
 	<!-- custom css stylesheet  -->
 	<link rel="stylesheet" href="css/style.css">
 	<title>Boolzapp</title>
@@ -19,7 +20,13 @@
 <body>
 	<main id="app">
 		<div class="container">
-			<div class="row justify-content-center">
+			<div class="row">
+				<div class="col-12 p-5 text-white">
+					<h2 class="ms-2 pb-5">Random emails :</h2>
+					<ul class="random-email-list fs-4">
+						<li class="random-email" v-for="email in generatedEmails">{{email}}</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</main>
