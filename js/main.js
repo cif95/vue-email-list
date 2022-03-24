@@ -7,20 +7,28 @@
 const app = new Vue({
 	el:'#app',
 	data: {
-		generatedEmails : []
+		generatedEmails : [],
+		visible : true
 	},
 	methods: {
-		getRandomMail(){
-			axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
-			.then( (response) => {
-				this.generatedEmails.push(response.data.response);
-				console.log(this.generatedEmails);
-			});
-		}
-	},
-	mounted(){
-		for( let i = 0; i < 10 ; i++){
-			this.getRandomMail();
+		/**
+		 * function that gets n random mails through boolean API, then pushes them into the given array
+		 * @param {*} array array where n emails will be pushed
+		 * @param {*} n desired number of emails 
+		 */
+		getRandomMails(array, n){
+			for( let i = 0; i < n ; i++){
+				axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+				.then( (response) => {
+					array.push(response.data.response);
+				});
+			}
+			this.visible = true;
+		},
+		clearList(){
+			this.generatedEmails = [];
+			this.visible = false;
 		}
 	}
 })
+
