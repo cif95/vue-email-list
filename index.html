@@ -22,10 +22,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12 p-5 text-white">
-					<button @click="getRandomMails( generatedEmails, 10)" class="btn btn-outline-secondary fs-2 mb-5"> Generate Mails </button>
-					<button @click="clearList(generatedEmails)" class="btn btn-outline-warning fs-2 mb-5 ms-3">Reset</button>
+					<button @click="showList()" class="btn btn-outline-secondary fs-2 mb-5"> Generate Emails </button>
+					<button @click="resetList()" class="btn btn-outline-warning fs-2 mb-5 ms-3">Reset</button>
 					<ul v-show="visible" class="random-email-list fs-4">
-						<li v-show="generatedEmails.length == 10" v-for="mail in generatedEmails">{{ mail }}</li>
+						<li v-for="mail in generatedEmails">{{ mail }}</li>
 					</ul>
 				</div>
 			</div>

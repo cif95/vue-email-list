@@ -8,7 +8,7 @@ const app = new Vue({
 	el:'#app',
 	data: {
 		generatedEmails : [],
-		visible : true
+		visible : false
 	},
 	methods: {
 		/**
@@ -23,12 +23,20 @@ const app = new Vue({
 					array.push(response.data.response);
 				});
 			}
+		},
+		// function that sets visible value to true
+		showList(){
 			this.visible = true;
 		},
-		clearList(){
-			this.generatedEmails = [];
+		// function that resets pre-existing list and sets visible value to false
+		resetList(){
 			this.visible = false;
+			this.generatedEmails = [];
+			this.getRandomMails(this.generatedEmails, 10);
 		}
+	},
+	mounted(){
+		this.getRandomMails(this.generatedEmails, 10);
 	}
 })
 
